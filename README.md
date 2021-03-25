@@ -22,3 +22,4 @@
   - React-router
   - styled-components
 
+Сам проект [тут](https://bewels.github.io/pizza)
