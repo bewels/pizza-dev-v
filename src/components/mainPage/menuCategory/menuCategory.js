@@ -46,7 +46,7 @@ const CategoryContainer = styled.div`
 
 `;
 
-function MenuCategory ({category, handelShow, menu, onCategoryActive}) {
+function MenuCategory ({category, handelShow, onCategoryActive}) {
     const handelActive = (id) => {
         onCategoryActive(id)
     }
@@ -54,7 +54,7 @@ function MenuCategory ({category, handelShow, menu, onCategoryActive}) {
         <CategoryContainer>
             <div className="category-info">
                 <h2>Menu Category</h2>
-                <button onClick={() => handelShow('Menu', menu)} className="viwe-all">Viwe All</button>
+                <button onClick={() => handelShow('menu')} className="viwe-all">Viwe All</button>
             </div>
             <div className="category">
                 {
@@ -68,7 +68,6 @@ function MenuCategory ({category, handelShow, menu, onCategoryActive}) {
 const mapStateToProps = (state) => {
     return {
         category: state.category.category,
-        menu: state.menu.menuItems
     };
 }
 

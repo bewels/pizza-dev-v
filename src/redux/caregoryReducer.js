@@ -1,7 +1,8 @@
 import categoryItem from "../components/mainPage/menuCategory/categoryItem/categoryItem";
 
 const initialState = {
-    category: []
+    category: [],
+    activeId: null
 };
 
 export const categoryReducer = (state = initialState, action) => {
@@ -10,7 +11,13 @@ export const categoryReducer = (state = initialState, action) => {
 
             const category = action.payload
 
-            category.forEach(item => item.active = false)
+            category.forEach(item => {
+                if (item._id === state.activeId){
+                    item.active = true
+                } else {
+                    item.active = false
+                }
+            })
 
             return {...state, category}
 
@@ -22,7 +29,7 @@ export const categoryReducer = (state = initialState, action) => {
                     item.active = true
                 } else item.active = false
             })
-            return {...state, category: newCategory}
+            return {...state, category: newCategory, activeId: action.payload}
 
         default:
             return state

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import {handelHide, delBasket} from '../../redux/actions/actions'
+import {handelHide, delBasket, addBasket, addStillBasket} from '../../redux/actions/actions'
 import MenuItems from '../mainPage/menu/menuItems';
 import BasketItem from '../profile/basket/basketItems/basketItems';
 
@@ -43,7 +43,7 @@ const ModalContainer = styled.div`
 
 `
 
-function ModalWindow ({handelHide, show, name, items, delBasket}) {
+function ModalWindow ({handelHide, show, name, basketItems, menu, delBasket, addBasket, addStillBasket}) {
 
     if (!show) return null;
 
@@ -54,6 +54,17 @@ function ModalWindow ({handelHide, show, name, items, delBasket}) {
     const delItem = (id) => {
         delBasket(id)
     }
+
+    const addToBasket = (product, id) => {
+        if (basketItems.find(item => item === product)) {
+            addStillBasket(id);
+            return;
+        }
+        addBasket(product);
+    }
+
+
+    const cangeForModal = name === 'menu' ? menu : basketItems 
     return (
         <ModalContainer>
             <div className="modal-info">
@@ -62,7 +73,7 @@ function ModalWindow ({handelHide, show, name, items, delBasket}) {
             </div>
             <div>
                 {
-                    items.map(item => name === 'basket' ? <BasketItem key={item._id} delBasket={delItem} params={item} /> : <MenuItems key={item._id} params={item}/>)
+                    cangeForModal.map(item => name === 'basket' ? <BasketItem key={item._id} delBasket={delItem} params={item} /> : <MenuItems addBasket={addToBasket} key={item._id} params={item}/>)
                 }
             </div>
         </ModalContainer>
@@ -70,17 +81,19 @@ function ModalWindow ({handelHide, show, name, items, delBasket}) {
 }
 
 const mapStateToProps = (state) => {
-
     return {
         show: state.client.show,
         name: state.client.name,
-        items: state.client.items
+        basketItems: state.basket.menuItems,
+        menu: state.menu.menuItems
     }
 }
 
 const mapDispathToProps = {
     handelHide,
-    delBasket
+    delBasket,
+    addBasket,
+    addStillBasket
 }
 
 export default connect(mapStateToProps, mapDispathToProps)(ModalWindow)

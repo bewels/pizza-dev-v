@@ -8,6 +8,7 @@ export const clientReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'HANDEL_SHOW':
+            console.log(action.payload);
             return {
                 ...state,
                 show: true,

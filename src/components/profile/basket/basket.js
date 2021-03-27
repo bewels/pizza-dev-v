@@ -47,7 +47,7 @@ function Basket ({basketItems, handelShow, delBasket}) {
             </div>
             <div>
                 {
-                    basketItems.map((item, i) => i < 3 ? <BasketItem key={item.id} delBasket={delItem} params={item}/> : null)
+                    basketItems.map((item, i) => i < 3 ? <BasketItem key={item._id} delBasket={delItem} params={item}/> : null)
                 }
             </div>
         </BasketContainer>

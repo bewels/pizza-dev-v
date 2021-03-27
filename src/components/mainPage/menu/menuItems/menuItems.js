@@ -102,7 +102,7 @@ export default function Menu ({params, onLike, handelActive, addBasket}) {
                 <span>{params.title}</span>
                 <span><span>$</span>{params.price}</span>
             </div>
-            <button onClick={() => addBasket(params, params.id)}><i className="bi bi-plus"></i></button>
+            <button onClick={() => addBasket(params, params._id)}><i className="bi bi-plus"></i></button>
         </MenuItems>
     );
 }

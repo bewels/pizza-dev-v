@@ -54,7 +54,7 @@ const BasketItemContainer = styled.div`
 `;
 
 export default function BasketItem ({params, delBasket}) {
-    const {url, category, title, price, count, id} = params
+    const {url, category, title, price, count, _id} = params
     return (
         <BasketItemContainer>
             <div className="item-img">
@@ -66,7 +66,7 @@ export default function BasketItem ({params, delBasket}) {
             </div>
             <div className="item-price">
                 <span className="prise"><span className="orange">$</span>{price}</span>
-                <i onClick={() => delBasket(id)} className="bi bi-x"></i>
+                <i onClick={() => delBasket(_id)} className="bi bi-x"></i>
             </div>
         </BasketItemContainer>
     );

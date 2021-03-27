@@ -64,7 +64,7 @@ export default function Navigation () {
                             <i className="bi bi-house-door"></i>
                         </li>
                     </NavLink>
-                    <NavLink to="/pizza/liked" activeClassName='active'>
+                    <NavLink to="/liked" activeClassName='active'>
                         <li>
                             <i className="bi bi-heart"></i>
                         </li>
